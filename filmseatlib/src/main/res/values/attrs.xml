@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <declare-styleable name="FileSeatChoiceView">
+       <attr name="seat_checked" format="reference"/>
+       <attr name="seat_available" format="reference"/>
+       <attr name="seat_sold" format="reference"/>
+       <attr name="overview_checked_color" format="color"/>
+       <attr name="overview_sold_color" format="color"/>
+       <attr name="overview_available_color" format="color"/>
+       <attr name="text_color" format="color"/>
+   </declare-styleable>
+
+</resources>
