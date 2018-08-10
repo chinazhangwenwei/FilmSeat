@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -117,7 +118,7 @@ public class FileSeatChoiceView extends View {
         isDrawFileTitle = true;
         canvas.drawLine(0, filmHeight, getWidth(), filmHeight, paintText);
         Path path = new Path();
-        paintTitle.setTextSize(dip2px(getContext(), 16));
+        paintTitle.setTextSize(dip2px(getContext(), 14));
         float textWidth = paintTitle.measureText(filmName);
         paintTitle.setAntiAlias(true);
         paintTitle.setColor(Color.LTGRAY);
@@ -126,7 +127,7 @@ public class FileSeatChoiceView extends View {
         int titleWidth = (int)textWidth *3;
         startX = (getWidth() -titleWidth)/2;
         path.reset();
-        int space = dip2px(getContext(), 4);
+        int space = dip2px(getContext(), 6);
         int spacePad = dip2px(getContext(), 6);
         path.moveTo(startX, filmHeight);
         path.lineTo(startX + titleWidth, filmHeight);
@@ -144,26 +145,43 @@ public class FileSeatChoiceView extends View {
         seatStartY =(int)(filmHeight + textHeight + spacePad + spacePad)+spacePad;
     }
 
-
     private void drawFilmSeat(Canvas canvas) {
         Matrix matrix = new Matrix();
         matrix.setScale(2f,2f);
+        RectF rectF = new RectF(dip2px(getContext(),6),seatStartY+dip2px(getContext(),6)+
+                bitmapSeatAvaliable.getHeight(),dip2px(getContext(),18),
+                seatStartY+bitmapSeatAvaliable.getHeight()+(bitmapSeatAvaliable.getHeight()+dip2px(getContext(),6))*12);
+        paintTitle.setColor(Color.GRAY);
+
+        canvas.drawRoundRect(rectF,dip2px(getContext(),8),dip2px(getContext(),8),paintTitle);
+        paintTitle.setTextSize(dip2px(getContext(),10));
+        paintTitle.setColor(Color.WHITE);
+        int nTextWidth = (int)paintTitle.measureText("1");
+        int nDoubleTextWidth = nTextWidth<<1;
+        int drawTextWidth =0;
         for(int i =0;i<12;i++){
             seatStartY+=bitmapSeatAvaliable.getHeight()+dip2px(getContext(),6);
             seatStartX=0;
+           // canvas.dr(rectF,dip2px(getContext(),8),dip2px(getContext(),8),paintTitle);
+            if(i>8){
+                drawTextWidth= nDoubleTextWidth;
+            }else{
+                drawTextWidth = nTextWidth;
+            }
+            canvas.drawText(i+1+"",dip2px(getContext(),6)+
+                    (dip2px(getContext(),12)-drawTextWidth)/2,
+                    (seatStartY+(bitmapSeatAvaliable.getHeight()-(paintTitle.getFontMetrics().bottom-paintTitle.getFontMetrics().top))/2-paintTitle.getFontMetrics().top),paintTitle);
             for(int j =0;j<20;j++){
-                if(j==5){
+                seatStartX+=bitmapSeatAvaliable.getWidth()+dip2px(getContext(),6);
+                if(j==2){
                     continue;
                 }
-                seatStartX+=bitmapSeatAvaliable.getWidth()+dip2px(getContext(),6);
-               // canvas.drawBitmap(bitmapSeatAvaliable,seatStartX,seatStartY,paintSeat);
                 matrix.setTranslate(seatStartX,seatStartY);
                 canvas.drawBitmap(bitmapSeatAvaliable,matrix,paintSeat);
             }
         }
-
-
     }
+
 
     private void drawFilmOverView(Canvas canvas) {
 

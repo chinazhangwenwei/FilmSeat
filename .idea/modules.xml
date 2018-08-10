@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DemoFilmSeat.iml" filepath="$PROJECT_DIR$/DemoFilmSeat.iml" />
       <module fileurl="file://E:\android_demo\FilmSeat\FilmSeat\DemoFilmSeat.iml" filepath="E:\android_demo\FilmSeat\FilmSeat\DemoFilmSeat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/FilmSeat.iml" filepath="$PROJECT_DIR$/FilmSeat.iml" />
+      <module fileurl="file://D:\interjoy\cnn\SeatTable\DemoFilmSeat\FilmSeat.iml" filepath="D:\interjoy\cnn\SeatTable\DemoFilmSeat\FilmSeat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:\android_demo\FilmSeat\FilmSeat\app\app.iml" filepath="E:\android_demo\FilmSeat\FilmSeat\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/filmseatlib/filmseatlib.iml" filepath="$PROJECT_DIR$/filmseatlib/filmseatlib.iml" />
